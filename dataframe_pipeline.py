@@ -30,13 +30,13 @@ def run(argv=None):
     parser.add_argument(
         '--amount_filter',
         dest='amount_filter',
-        default=20,
+        default='20',
         help='Filter transactions to those strictly greater than this amount.'
     )
     parser.add_argument(
         '--year_filter',
         dest='year_filter',
-        default=2010,
+        default='2010',
         help='Filter transactions to those made during or after this year.'
     )
     known_args, pipeline_args = parser.parse_known_args(argv)
@@ -44,8 +44,8 @@ def run(argv=None):
     pipeline_options = PipelineOptions(pipeline_args)
     pipeline = beam.Pipeline(options=pipeline_options)
 
-    amount = known_args.amount_filter
-    year = dt.datetime(year=known_args.year_filter, month=1, day=1, tzinfo=pytz.UTC)
+    amount = int(known_args.amount_filter)
+    year = dt.datetime(year=int(known_args.year_filter), month=1, day=1, tzinfo=pytz.UTC)
 
     with pipeline as p:
         df = p | 'Read CSV' >> read_csv(known_args.input, parse_dates=['timestamp'])
