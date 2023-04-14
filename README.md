@@ -22,14 +22,14 @@ I have not yet implemented this, but will do so for comparison purposes.
 Sample transactions data is available to us here:
 - `gs://cloud-samples-data/bigquery/sample-transactions/transactions.csv`
 
-The pipeline can accept a custom .csv file via the `--input` parameter so long as it contains the same columns.
+The pipeline can accept a custom .csv file via the `--input` parameter so long as it is of the same format.
 
 ### Run
 The pipeline has two more parameters to demonstrate filtering:
 - `--amount_filter`: Filter transactions to those strictly greater than this amount. Defaults to 20.
 - `--year_filter`: Filter transactions to those made during or after this year. Defaults to 2010.
 
-To run locally with default parameters, execute:
+To run locally with the default parameters, execute:
 ```shell
 python -m dataframe_pipeline
 ```
