@@ -1,0 +1,5 @@
+apache-beam==2.46.0
+apache-beam[gcp]
+apache-beam[dataframe]
+pandas~=1.5.3
+pytz~=2023.3
