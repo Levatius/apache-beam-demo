@@ -50,9 +50,7 @@ def run(argv=None):
     with pipeline as p:
         df = p | 'Read CSV' >> read_csv(known_args.input, parse_dates=['timestamp'])
         results = run_transform(df, amount, year)
-        # TODO: Figure out why .to_csv() produces blank lines, the official Beam taxiride example has the same issue:
-        # https://github.com/apache/beam/tree/master/sdks/python/apache_beam/examples/dataframe#running-location_id_agg
-        results.to_csv('output/results.csv')
+        results.to_csv('output/results.csv', lineterminator='\n')
 
 
 if __name__ == '__main__':
