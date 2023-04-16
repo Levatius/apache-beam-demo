@@ -1,4 +1,5 @@
 import datetime as dt
+import logging
 import pandas as pd
 import pytz
 import unittest
@@ -19,3 +20,8 @@ class DataframePipelineTest(unittest.TestCase):
     def test_transform(self):
         generated_series = dataframe_pipeline.run_transform(self.input_df, self.filter_amount, self.filter_year)
         pd.testing.assert_series_equal(generated_series, self.expected_series)
+
+
+if __name__ == '__main__':
+    logging.getLogger().setLevel(logging.INFO)
+    unittest.main()
